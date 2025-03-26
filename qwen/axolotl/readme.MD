@@ -94,16 +94,20 @@ fsdp_config:
 ```
 
 ### Run the training job 
-If you are working with multiple nodes, run the script on 
+
+If you are working with multiple nodes, run the script on each node. 
+
 ```
 #!sh
 huggingface-cli login --token <enter-hf-token-here>
 
 export MASTER_ADDR=<enter-address-or-ip-of-master>
 
-export HF_HOME=/shared/hf_cache 
-export WANDB_API_KEY=3f5def88c45cc52e43c0083a06163cbc704e40cd
+export HF_HOME=/shared/hf_cache  # incase you want models to be cached in shared drive. ignore this if not. 
+export WANDB_API_KEY=<enter-wandb-key-here>
 export NCCL_SOCKET_IFNAME="eth0"
 export NCCL_IB_MERGE_NICS=0
 
 torchrun --nnodes 2 --nproc_per_node 8 --rdzv_id 1111 --rdzv_backend c10d  --rdzv_endpoint  "$MASTER_ADDR:6000" -m axolotl.cli.train /shared/qwen_train_32b.yaml
+
+```
