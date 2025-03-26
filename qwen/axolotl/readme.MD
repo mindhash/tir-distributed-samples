@@ -41,7 +41,7 @@ datasets:
   - path: tatsu-lab/alpaca
     type: alpaca  
 trust_remote_code: true
-dataset_prepared_path: /shared/qwen/axolotl/data/last_run_prepared
+dataset_prepared_path: /shared/data/last_run_prepared
 hub_model_id:
 sequence_len: 8192
 pad_to_sequence_len: true
@@ -52,7 +52,7 @@ wandb_watch:
 wandb_name: qwen-32b-deepspeed-z3-axolotl
 wandb_run_id: qwen-32b-deepspeed-z3-axolotl
 wandb_log_model:
-output_dir: /shared/qwen/axolotl/output
+output_dir: /shared/output
 
 gradient_accumulation_steps: 1
 micro_batch_size: 3
